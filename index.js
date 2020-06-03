@@ -1,0 +1,1 @@
+// npm i express, request, body-parser, express-validator, cors, bcrypt, mysql
