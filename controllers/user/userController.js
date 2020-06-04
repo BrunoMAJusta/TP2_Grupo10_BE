@@ -71,12 +71,22 @@ function ordersByUserId(req, result) {
     })
 }
 
+function episByOrder(req, result) {
+    userFunctions.episByOrder((error, success) => {
+        if (error) {
+            throw error;
+            return;
+        };
+        result.json(success)
+    })
+}
 
 module.exports = {
     logout: logout,
     LoginValidation: LoginValidation,
     registerUser:registerUser,
-    ordersByUserId: ordersByUserId
+    ordersByUserId: ordersByUserId,
+    episByOrder:episByOrder
 }
 
 

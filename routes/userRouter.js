@@ -16,6 +16,8 @@ router.post('/users',userController.registerUser)
 //___GET___
 router.get('/', validate.index);
 router.get('/users/:id/orders',middleware.checkToken,userController.ordersByUserId)
+router.get('/orders/epis',middleware.checkToken,userController.episByOrder)
+
 
 
 //___PUT___

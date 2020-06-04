@@ -93,10 +93,10 @@ function ordersByUserId(id, callback) {
     connection
 }
 
-function episByOrderId(id, callback) {
+function episByOrder(callback) {
     connection
-    let sql = `SELECT tp2_EPI.name, tp2_order_epi.order_id FROM tp2_order_epi, tp2_EPI WHERE tp2_EPI.order_id = tp2_order_epi.order_id;`;
-    connection.query(sql, [id], function (error, rows, result) {
+    let sql = `SELECT tp2_EPI.name, tp2_order_epi.order_id FROM tp2_order_epi, tp2_EPI WHERE tp2_EPI.epi_id = tp2_order_epi.epi_id;`;
+    connection.query(sql, function (error, rows, result) {
         if (error) callback(error);
         console.log(rows);
         callback(null, {
@@ -112,5 +112,6 @@ module.exports = {
     login: login,
     logout: logout,
     register:register,
-    ordersByUserId:ordersByUserId
+    ordersByUserId:ordersByUserId,
+    episByOrder:episByOrder
 }
