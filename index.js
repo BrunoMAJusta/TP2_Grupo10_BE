@@ -6,13 +6,7 @@ const config = require("./config.json");
 const userRouter = require("./routes/userRouter");
 const app = express();
 
-app.use(validator());
-app.use(function (req, res, next) {
-    for (var item in req.body) {
-        req.sanitize(item).escape();
-    }
-    next();
-})
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors({origin:'*'}));
