@@ -2,7 +2,7 @@
 const mysql = require("mysql"); 
 // const dbConfig = require("../../database/dbConfig.json");
 // var connection = mysql.createConnection(dbConfig);
-var connection = mysql.createConnection({host:process.env.HOST,user:process.env.USER,password:process.env.PASSWORD, database:process.env.DATABASE});
+var connection = mysql.createConnection({host:process.env.host,user:process.env.user,password:process.env.password, database:process.env.database});
 
 
 function getCategory(callback) {
