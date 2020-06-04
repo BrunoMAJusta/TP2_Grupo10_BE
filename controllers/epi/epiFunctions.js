@@ -51,6 +51,7 @@ function getEpi(id, callback) {
             data: rows
         });
     });
+    connection
 };
 
 
