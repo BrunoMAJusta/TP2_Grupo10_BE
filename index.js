@@ -23,6 +23,6 @@ app.use(function(req, res, next) {
 
 app.use(userRouter);
 app.use(orderRouter);
-// app.use(epiRouter);
+app.use(epiRouter);
 
 app.listen(config.port, () => console.log(config.serverStartMessage,config.host, config.port));
