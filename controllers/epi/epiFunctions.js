@@ -1,12 +1,6 @@
-// const dbConfig = require("../../database/db-config.json"); //Importar configuração da base de dados
-const mysql = require("mysql"); //bilbioteca de mysql https://www.npmjs.com/package/mysql
-// const config = require("../../config.json");
-var connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
-});
+const mysql = require("mysql");
+const dbConfig = require("../../database/dbConfig.json");
+var connection = mysql.createConnection(dbConfig);
 
 function addEpi(name, category_id, price, img, callback) {
 
@@ -25,10 +19,27 @@ function addEpi(name, category_id, price, img, callback) {
 
 };
 
-function getEpis(id, callback) {
+function getEpis(callback) {
     connection
     let sql = `SELECT * FROM tp2_EPI`;
     connection.query(sql, function (error, rows, result) {
+        console.log(error)
+        if (error) callback(error);
+        console.log(rows)
+        callback(null, {
+            success: true,
+            data: rows
+        });
+
+    });
+    connection
+
+};
+
+function getEpi(id, callback) {
+    connection
+    let sql = `SELECT * FROM tp2_EPI WHERE epi_id = ?`;
+    connection.query(sql, [id], function (error, rows, result) {
         if (error) callback(error);
         console.log(rows)
         callback(null, {
@@ -39,7 +50,9 @@ function getEpis(id, callback) {
 };
 
 
+
 module.exports = {
     addEpi: addEpi,
-    getEpis:getEpis,
+    getEpis: getEpis,
+    getEpi: getEpi
 }

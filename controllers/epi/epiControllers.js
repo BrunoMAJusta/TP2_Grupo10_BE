@@ -1,7 +1,6 @@
 const epiFunctions = require("./epiFunctions")
 
 //ADD NEW EPI
-
 function addEpi(req, result){
         let name = req.body.name;
         let category_id = req.body.category_id;
@@ -28,9 +27,20 @@ function getEpis(req, result) {
         };
         result.json(success)
     })
+};
+function getEpi(req, result) {
+    let id = req.params.id
+    epiFunctions.getEpi(id, (error, success) => {
+        if (error) {
+            throw error;
+            return;
+        };
+        result.json(success)
+    })
 }
 
 module.exports = {
     addEpi:addEpi,
-    getEpis:getEpis
+    getEpis:getEpis,
+    getEpi: getEpi,
 }
