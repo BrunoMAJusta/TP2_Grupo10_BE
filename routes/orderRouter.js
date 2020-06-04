@@ -7,7 +7,7 @@ const middleware = require("../middleware");
 
 
 //___POST___
-router.post('/orders/users/:id', orderController.newOrder)
+router.post('/orders/users/:id', middleware.checkToken, orderController.newOrder)
 
 //___GET___
 
