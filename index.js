@@ -6,6 +6,8 @@ const config = require("./config.json");
 const userRouter = require("./routes/userRouter");
 const orderRouter = require("./routes/orderRouter");
 const epiRouter = require("./routes/epiRouter");
+const categoryRouter = require("./routes/categoryRouter");
+
 
 const app = express();
 
@@ -24,5 +26,7 @@ app.use(function(req, res, next) {
 app.use(userRouter);
 app.use(orderRouter);
 app.use(epiRouter);
+app.use(categoryRouter);
+
 
 app.listen(config.port, () => console.log(config.serverStartMessage,config.host, config.port));
