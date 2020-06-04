@@ -29,4 +29,7 @@ app.use(epiRouter);
 app.use(categoryRouter);
 
 
-app.listen(config.port, () => console.log(config.serverStartMessage,config.host, config.port));
+
+
+// app.listen(config.port, () => console.log(config.serverStartMessage,config.host, config.port));
+app.listen(process.env.PORT);

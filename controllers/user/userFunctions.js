@@ -2,8 +2,9 @@ const mysql = require("mysql");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require("../../config.json")
-const dbConfig = require("../../database/dbConfig.json");
-var connection = mysql.createConnection(dbConfig);
+// const dbConfig = require("../../database/dbConfig.json");
+// var connection = mysql.createConnection(dbConfig);
+var connection = mysql.createConnection({host:process.env.HOST,user:process.env.USER,password:process.env.PASSWORD, database:process.env.DATABASE});
 
 function login(email, password, callback) {
     connection
